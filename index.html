@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="zh-CN" xml:lang="zh-CN">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta charset="UTF-8" />
+    <title></title>
+    <meta name="viewport" content="width=1226" />
+    <meta http-equiv="Cache-Control" content="no-transform " />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="stylesheet" href="base.min.css" />
+    <style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="site-header">
+        <div class="container">
+            <div class="header-nav">
+                <ul class="nav-list J_navMainList clearfix">
+                    <li class="nav-item">
+                        <a class="link" href="javascript: void(0);"><span class="text">小米手机</span></a>
+                        <div class="item-children">
+                            <div class="container">
+                                <ul class="children-list clearfix">
+                                    <li class="first">
+                                        11111111111
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="link" href="javascript: void(0);"><span class="text">红米</span></a>
+                        <div class="item-children">
+                            <div class="container">
+                                <ul class="children-list clearfix">
+                                    <li class="first">
+                                        2222222222222
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="link" href="javascript: void(0);"><span class="text">平板 · 笔记本</span></a>
+                        <div class="item-children">
+                            <div class="container">
+                                <ul class="children-list clearfix">
+                                    <li class="first">
+                                        333333333333
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="link" href="javascript: void(0);"><span class="text">平板4笔记本</span></a>
+                        <div class="item-children">
+                            <div class="container">
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script src="jquery.js"></script>
+    <script>
+    t();
+
+    function t() {
+
+        var t = 0,
+            n = 0,
+            a = $(".J_navMainList"),
+            i = $('<div id="J_navMenu" class="header-nav-menu" style="display: none;"><div class="container"></div></div>'),
+            r = i.find("> .container");
+
+        i.appendTo(".site-header").on({
+            mouseenter: function() {
+                t && (clearTimeout(t), t = null)
+            },
+            mouseleave: function() {
+                t = setTimeout(function() {
+                    i.slideUp()
+                }, 200)
+            }
+        }),
+
+        a.find(".nav-item").on({
+            mouseenter: function() {
+                var o, s = $(this),
+                    w = t && (clearTimeout(t), t = null),
+                    l = $(this).find(".children-list").length,
+                    x = s.addClass("nav-item-active"),
+                    y = $(this).find(".children-list").clone();
+
+                return w,x,
+                       l ? (o = y, r.html(o),
+                            void(n = setTimeout(function() {
+                                i.stop(!0, !1).slideDown(200, function() {
+                                    $(this).addClass("header-nav-menu-active")
+                                })
+                            }, 200))) : void i.removeClass("header-nav-menu-active").stop(!0, !1).slideUp(200)
+            },
+            mouseleave: function() {
+                var r = $(this);
+                n && (clearTimeout(n), n = null), 
+                r.removeClass("nav-item-active"), 
+                t = setTimeout(function() {
+                    i.stop(!0, !0).slideUp(200)
+                }, 200)
+            }
+        })
+    }
+    </script>
+</body>
+
+</html>
